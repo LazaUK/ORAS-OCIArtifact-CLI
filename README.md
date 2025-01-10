@@ -3,9 +3,9 @@
 This repository demonstrates how to generate **OCI artifact** with **ORAS CLI** client and then build a customised Docker image of an Nginx web service from that artifact with **GitHub Actions**. It includes a sample tarball and Dockerfile to facilitate end-to-end testing, from creating an OCI artifact to deploying a fully functional web site.
 
 > [!NOTE]
-> An [Open Container Initiative (OCI)](https://opencontainers.org/) artifact is a standardised, portable and secure way to package and distribute software.
-> [ORAS](https://oras.land/) enables distribution of artifacts across OCI-compliant registries, like GitHub Container Registry (GHCR).
-> [GitHub Actions](https://docs.github.com/en/actions) is a CI/CD platform to automate custom building, testing and deployment pipelines.
+> - An [Open Container Initiative (OCI)](https://opencontainers.org/) artifact is a standardised, portable and secure way to package and distribute software.
+> - [ORAS](https://oras.land/) enables distribution of artifacts across OCI-compliant registries, like GitHub Container Registry (GHCR).
+> - [GitHub Actions](https://docs.github.com/en/actions) is a CI/CD platform to automate custom building, testing and deployment pipelines.
 
 
 
