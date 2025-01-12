@@ -1,6 +1,6 @@
 # ORAS and Docker CLI: Building Custom Images from OCI Artifacts
 
-This repository demonstrates how to generate **OCI artifact** with **ORAS CLI** client and then build a customised Docker image of an Nginx web service from that artifact. It includes a sample tarball and Dockerfile to facilitate end-to-end testing, from creating an OCI artifact to deploying a fully functional Web site.
+This guide walks you through generating an **OCI artifact** with the **ORAS CLI** client and then building a customised Docker image of an Nginx web service from that artifact. It includes a sample tarball and Dockerfile to facilitate end-to-end testing, from creating an OCI artifact to deploying a fully functional Web site.
 
 > [!NOTE]
 > - An [Open Container Initiative (OCI)](https://opencontainers.org/) artifact is a standardised, portable and secure way to package and distribute software.
@@ -13,14 +13,14 @@ This repository demonstrates how to generate **OCI artifact** with **ORAS CLI** 
 
 ## Step 1: Create an OCI Artifact
 1. Install ORAS client as described [here](https://oras.land/docs/installation/).
-2. Create **Personal Access Token** (PAT) in the GiHub's `Settings -> Developer Settings -> Personal Access Tokens -> Tokens (classic)` section. You would need to allow _read_, _write_ and _delete packages_ permissions in your PAT.
+2. Create a **personal access token** (PAT) in GiHub's `Settings -> Developer Settings -> Personal Access Tokens -> Tokens (classic)` section. You'll need to allow _read_, _write_ and _delete packages_ permissions in your PAT.
 3. Setup environment variables:
 ``` PowerShell
 set GHCR_USER=<GITHUB_USERNAME>
 set GHCR_TOKEN=ghp_<GITHUB_TOKEN>
 set GHCR_REPO=<GITHUB_REPO>
 ```
-4. Login to GitHub Container Registry (GHCR) with ORAS client:
+4. Login to GHCR with ORAS client:
 ``` PowerShell
 oras login -u %GHCR_USER% -p %GHCR_TOKEN% ghcr.io
 ```
@@ -33,7 +33,7 @@ oras.exe push ghcr.io/%GHCR_USER%/%GHCR_REPO%:v1 demopage.tar.gz:application/x-t
 oras manifest fetch --pretty ghcr.io/%GHCR_USER%/%GHCR_REPO%:v1
 ```
 > [!TIP]
-> This step-by-step guide assumes you are using Windows 11 on your development machine. For other operating systems, please consult their documentation on the reference of environment variables.
+> This guide assumes you're using Windows 11. Refer to the relevant documentation for specific instructions on setting environment variables on different platforms.
 
 ## Step 2: Build a Docker Image
 1. Download the OCI artifact from GHCR:
@@ -54,9 +54,9 @@ docker push ghcr.io/%GHCR_USER%/%GHCR_REPO%:latest
 ```
 
 ## Step 3: Deploy a Web site
-1. Launch a container by pulling the latest version of Docker image from GHCR:
+1. Launch a container by pulling the latest version of the Docker image from GHCR:
 ``` PowerShell
 docker run -d --name DemoSite -p 8080:80 ghcr.io/%GHCR_USER%/%GHCR_REPO%:latest
 ```
-2. Test Web site by opening http://localhost:8080 locally.
+2. Test Web site by opening [this URL](http://localhost:8080) locally.
 ![Screenshot_of_Website](images/GHCR_tarball.gif)
