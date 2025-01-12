@@ -58,4 +58,5 @@ docker push ghcr.io/%GHCR_USER%/%GHCR_REPO%:latest
 ``` PowerShell
 docker run -d --name DemoSite -p 8080:80 ghcr.io/%GHCR_USER%/%GHCR_REPO%:latest
 ```
-2. Test Web site by opening http://localhost:8080
+2. Test Web site by opening http://localhost:8080 locally.
+![Screenshot_of_Website](images/GHCR_tarball.gif)
