@@ -1,6 +1,6 @@
 # ORAS and GitHub Actions: Building Custom Images from OCI Artifacts
 
-This repository demonstrates how to generate **OCI artifact** with **ORAS CLI** client and then build a customised Docker image of an Nginx web service from that artifact. It includes a sample tarball and Dockerfile to facilitate end-to-end testing, from creating an OCI artifact to deploying a fully functional web site.
+This repository demonstrates how to generate **OCI artifact** with **ORAS CLI** client and then build a customised Docker image of an Nginx web service from that artifact. It includes a sample tarball and Dockerfile to facilitate end-to-end testing, from creating an OCI artifact to deploying a fully functional Web site.
 
 > [!NOTE]
 > - An [Open Container Initiative (OCI)](https://opencontainers.org/) artifact is a standardised, portable and secure way to package and distribute software.
@@ -32,8 +32,8 @@ oras.exe push ghcr.io/%GHCR_USER%/%GHCR_REPO%:v1 demopage.tar.gz:application/x-t
 ``` PowerShell
 oras manifest fetch --pretty ghcr.io/%GHCR_USER%/%GHCR_REPO%:v1
 ```
-> [!NOTE]
-> This step-by-step guide assumes you are using Windows 11 on your development machine.
+> [!TIP]
+> This step-by-step guide assumes you are using Windows 11 on your development machine. For other operating systems, please consult their documentation on the reference of environment variables.
 
 ## Step 2: Build a Docker Image
 
