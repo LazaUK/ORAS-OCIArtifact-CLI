@@ -1,4 +1,4 @@
-# ORAS and GitHub Actions: Building Custom Images from OCI Artifacts
+# ORAS and Docker CLI: Building Custom Images from OCI Artifacts
 
 This repository demonstrates how to generate **OCI artifact** with **ORAS CLI** client and then build a customised Docker image of an Nginx web service from that artifact. It includes a sample tarball and Dockerfile to facilitate end-to-end testing, from creating an OCI artifact to deploying a fully functional Web site.
 
@@ -36,5 +36,26 @@ oras manifest fetch --pretty ghcr.io/%GHCR_USER%/%GHCR_REPO%:v1
 > This step-by-step guide assumes you are using Windows 11 on your development machine. For other operating systems, please consult their documentation on the reference of environment variables.
 
 ## Step 2: Build a Docker Image
+1. Download the OCI artifact from GHCR:
+``` PowerShell
+oras pull -o ./download ghcr.io/%GHCR_USER%/%GHCR_REPO%:v1
+```
+2. Login to GHCR with Docker CLI:
+``` PowerShell
+docker login ghcr.io -u %GHCR_USER% -p %GHCR_TOKEN%
+```
+3. Build a Docker image from the downloaded OCI artifact:
+``` PowerShell
+docker build -t ghcr.io/%GHCR_USER%/%GHCR_REPO%:latest ./download
+```
+4. Publish newly built Docker image on GHCR:
+``` PowerShell
+docker push ghcr.io/%GHCR_USER%/%GHCR_REPO%:latest
+```
 
 ## Step 3: Deploy a Web site
+1. Launch a container by pulling the latest version of Docker image from GHCR:
+``` PowerShell
+docker run -d --name DemoSite -p 8080:80 ghcr.io/%GHCR_USER%/%GHCR_REPO%:latest
+```
+2. Test Web site by opening http://localhost:8080
